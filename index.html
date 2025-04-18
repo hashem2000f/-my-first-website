@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
@@ -11,10 +11,46 @@
       height: 100%;
       margin: 0;
       overflow: hidden;
-      background-color: #f8f9fa;
       font-family: 'Segoe UI', sans-serif;
     }
 
+    /* تحديد الألوان حسب نوع الجهاز */
+    /* اللون الافتراضي */
+    body {
+      background-color: #f8f9fa; /* اللون العام */
+    }
+
+    /* لأجهزة الكمبيوتر المحمول */
+    @media (min-width: 1025px) {
+      body {
+        background-color: #e9ecef; /* لون خاص للكمبيوتر المحمول */
+      }
+      .card {
+        border: 2px solid #343a40;
+      }
+    }
+
+    /* لأجهزة التابلت */
+    @media (max-width: 1024px) and (min-width: 576px) {
+      body {
+        background-color: #d1ecf1; /* لون خاص للآيباد */
+      }
+      .card {
+        border: 2px solid #007bff;
+      }
+    }
+
+    /* لأجهزة الهاتف المحمول */
+    @media (max-width: 575px) {
+      body {
+        background-color: #f1c40f; /* لون خاص للهاتف المحمول */
+      }
+      .card {
+        border: 2px solid #ff8c00;
+      }
+    }
+
+    /* تكبير الـ card وتنسيق النصوص */
     .container-fixed {
       height: 100%;
       display: flex;
@@ -57,15 +93,46 @@
       text-overflow: ellipsis;
     }
 
+    /* تظليل النص باللون الأخضر عند التمرير */
+    .bookmark-text a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
     .bookmark-text a:hover {
-      text-decoration: underline;
-      color: #0d6efd;
+      color: green; /* تغيير اللون إلى الأخضر عند التمرير */
+      text-decoration: none; /* إزالة الخط تحت الرابط */
     }
 
     .bookmark-actions {
       flex-shrink: 0;
       display: flex;
       gap: 0.5rem;
+    }
+
+    /* تحسين الشكل في الشاشات الصغيرة */
+    @media (max-width: 576px) {
+      .card {
+        padding: 1rem;
+      }
+      
+      .list-group-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .bookmark-actions {
+        margin-top: 0.5rem;
+      }
+    }
+
+    /* تحسين عرض الفورم في الشاشات الصغيرة */
+    @media (max-width: 576px) {
+      #bookmarkForm input {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
     }
   </style>
 </head>
